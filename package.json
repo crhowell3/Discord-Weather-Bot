@@ -1,0 +1,17 @@
+{
+  "name": "weather-bot",
+  "version": "1.0.0",
+  "description": "Bot for reporting weather alerts",
+  "main": "weather-bot.js",
+  "author": "Your Name",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^12.0.2",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.4.1",
+    "request": "^2.88.2",
+    "winston": "^3.2.1"
+  }
+}
