@@ -7,6 +7,7 @@ var alerts = [];
 var outlook_string_1 = "";
 var outlook_string_2 = "";
 var outlook_string_3 = "";
+var isPolling = false;
 
 const bot = new Discord.Client();
 bot.once('ready', () => {
@@ -99,7 +100,12 @@ function getOutlooks() {
     const $ = cheerio.load(response.data)
     const time = $('td.zz').text()
     const timeArr = time.split(' ')
-    const utcTime = timeArr[4]
+    var utcTime = ''
+    for (i = 0; i< timeArr.length; i++){
+      if (timeArr[i] === 'UTC'){
+        utcTime = timeArr[i-1]
+      }
+    }
     outlook_string_1 = "https://www.spc.noaa.gov/products/outlook/day1otlk_" + utcTime + ".gif"
   })
   .catch(function(error) {
@@ -109,7 +115,12 @@ function getOutlooks() {
     const $ = cheerio.load(response.data)
     const time = $('td.zz').text()
     const timeArr = time.split(' ')
-    const utcTime = timeArr[3]
+    var utcTime = ''
+    for (i = 0; i < timeArr.length; i++) {
+      if (timeArr[i] === 'UTC') {
+        utcTime = timeArr[i-1]
+      }
+    }
     outlook_string_2 = "https://www.spc.noaa.gov/products/outlook/day2otlk_" + utcTime + ".gif"
   })
   .catch(function(error) {
@@ -119,7 +130,12 @@ function getOutlooks() {
     const $ = cheerio.load(response.data)
     const time = $('td.zz').text()
     const timeArr = time.split(' ')
-    const utcTime = timeArr[3]
+    var utcTime = ''
+    for (i = 0; i < timeArr.length; i++) {
+      if (timeArr[i] === 'UTC') {
+        utcTime = timeArr[i-1]  
+      }
+    }
     outlook_string_3 = "https://www.spc.noaa.gov/products/outlook/day3otlk_" + utcTime + ".gif"
   })
   .catch(function(error) {
@@ -156,12 +172,19 @@ bot.on('message', message => {
     } else if (message.content === `${prefix}help`){
       message.channel.send("List of commands:\n&alerts - displays all active alerts for Lincoln County\n&help - displays this menu\n&outlook <1|2|3> - gets the latest SPC Outlook for whichever day you enter\n&poll - NOTE: only for use by @dev")
     } else if (message.content === `${prefix}poll`){
+      isPolling = true;
       var interval = setInterval(function() {
         getWarnings();
         getOutlooks();
       }, 30 * 1000);
       message.channel.send('Data scraping is active')
       .catch(console.error);
+    } else if (message.content === `${prefix}isPolling`){
+      if (isPolling) {
+        message.channel.send('Polling is active');
+      } else {
+        message.channel.send('Polling is not active. Run &poll to begin data scraping for alerts');
+      }
     } else if (command === 'outlook'){
       if (!args.length){
         message.channel.send('You did not provide an argument.')
