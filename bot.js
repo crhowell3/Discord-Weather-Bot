@@ -1,13 +1,8 @@
 const { Client } = require("discord.js");
-const { config } = require("dotenv");
 const { token } = require("./auth.json");
 
 const client = new Client({
 	disableEveryone: true,
-});
-
-config({
-	path: __dirname + "/.env",
 });
 
 client.on("ready", () => {
