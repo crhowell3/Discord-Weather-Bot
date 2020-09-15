@@ -1,5 +1,6 @@
 const { Client } = require("discord.js");
 const { token } = require("./auth.json");
+var status = "";
 
 const client = new Client({
 	disableEveryone: true,
@@ -21,13 +22,19 @@ client.on("ready", () => {
 				.members.cache.get("696937315804643362")
 				.presence.equals("offline")
 		) {
-			client.channels.cache
-				.get("690763269543034905")
-				.message.send("@omni-bot is offline.");
+			if (status == "online") {
+				client.channels.cache
+					.get("690763269543034905")
+					.send("@omni-bot is offline.");
+			}
+			status = "offline";
 		} else {
-			client.channels.cache
-				.get("690763269543034905")
-				.message.send("@omni-bot is online");
+			if (status == "offline") {
+				client.channels.cache
+					.get("690763269543034905")
+					.message.send("@omni-bot is online");
+			}
+			status = "online";
 		}
 	}, 5 * 1000);
 });
