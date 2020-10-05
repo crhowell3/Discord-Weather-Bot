@@ -33,7 +33,7 @@ client.on("ready", () => {
 			if (omni == "offline") {
 				client.channels.cache
 					.get("690763269543034905")
-					.message.send("@omni-bot#3177 is online");
+					.send("@omni-bot#3177 is online");
 			}
 			omni = "online";
 		}
@@ -54,7 +54,7 @@ client.on("ready", () => {
 			if (pppp == "offline") {
 				client.channels.cache
 					.get("690763269543034905")
-					.message.send("@PPPP_Bot#8649 is online");
+					.send("@PPPP_Bot#8649 is online");
 			}
 			pppp = "online";
 		}
