@@ -1,11 +1,15 @@
 const { Client } = require("discord.js");
 const { token } = require("./auth.json");
-var omni = "";
-var pppp = "";
-
 const client = new Client({
 	disableEveryone: true,
 });
+
+var omni = client.guilds.cache
+	.get("690763269543034902")
+	.members.cache.get("696937315804643362").presence;
+var pppp = client.guilds.cache
+	.get("690763269543034902")
+	.members.cache.get("752028279099097109").presence;
 
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}!`);
