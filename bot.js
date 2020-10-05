@@ -16,6 +16,11 @@ client.on("ready", () => {
 		},
 		status: "online",
 	});
+	console.log(
+		client.guilds.cache
+			.get("690763269543034902")
+			.members.cache.get("696937315804643362").presence
+	);
 
 	setInterval(function () {
 		if (
