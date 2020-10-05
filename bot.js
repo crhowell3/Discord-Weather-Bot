@@ -17,13 +17,6 @@ client.on("ready", () => {
 		status: "online",
 	});
 
-	pppp = client.guilds.cache
-		.get("690763269543034902")
-		.members.cache.get("752028279099097109").presence;
-
-	omni = client.guilds.cache
-		.get("690763269543034902")
-		.members.cache.get("696937315804643362").presence;
 	setInterval(function () {
 		if (
 			client.guilds.cache
