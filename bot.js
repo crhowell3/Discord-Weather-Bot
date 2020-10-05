@@ -16,23 +16,18 @@ client.on("ready", () => {
 		},
 		status: "online",
 	});
-	console.log(
-		client.guilds.cache
-			.get("690763269543034902")
-			.members.cache.get("696937315804643362").presence
-	);
 
 	setInterval(function () {
 		if (
 			client.guilds.cache
 				.get("690763269543034902")
 				.members.cache.get("696937315804643362")
-				.presence.equals("offline")
+				.presence.status === "offline"
 		) {
 			if (omni != "offline") {
 				client.channels.cache
 					.get("690763269543034905")
-					.send("@omni-bot#3177 is offline.");
+					.send("@omni-bot#3177 is offline");
 			}
 			omni = "offline";
 		} else {
@@ -48,12 +43,12 @@ client.on("ready", () => {
 			client.guilds.cache
 				.get("690763269543034902")
 				.members.cache.get("752028279099097109")
-				.presence.equals("offline")
+				.presence.status === "offline"
 		) {
 			if (pppp != "offline") {
 				client.channels.cache
 					.get("690763269543034905")
-					.send("@PPPP_Bot#8649 is offline.");
+					.send("@PPPP_Bot#8649 is offline");
 			}
 			pppp = "offline";
 		} else {
