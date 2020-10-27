@@ -27,14 +27,14 @@ client.on("ready", () => {
 			if (omni != "offline") {
 				client.channels.cache
 					.get("690763269543034905")
-					.send("@omni-bot#3177 is offline");
+					.send("カーリー is offline");
 			}
 			omni = "offline";
 		} else {
 			if (omni != "online") {
 				client.channels.cache
 					.get("690763269543034905")
-					.send("@omni-bot#3177 is online");
+					.send("カーリーis online");
 			}
 			omni = "online";
 		}
@@ -48,14 +48,14 @@ client.on("ready", () => {
 			if (pppp != "offline") {
 				client.channels.cache
 					.get("690763269543034905")
-					.send("@PPPP_Bot#8649 is offline");
+					.send("PPPP_Bot is offline");
 			}
 			pppp = "offline";
 		} else {
 			if (pppp != "online") {
 				client.channels.cache
 					.get("690763269543034905")
-					.send("@PPPP_Bot#8649 is online");
+					.send("PPPP_Bot is online");
 			}
 			pppp = "online";
 		}
