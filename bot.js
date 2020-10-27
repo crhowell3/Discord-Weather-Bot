@@ -7,7 +7,7 @@ const client = new Client({
 	disableEveryone: true,
 });
 
-client.on("ready", () => {
+client.on("ready", async () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	client.user.setPresence({
 		activity: {
